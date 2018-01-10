@@ -2,15 +2,15 @@ import javax.swing.*;
 import java.util.Scanner;
 import java.io.*;
 public class Test {
-    public float[][] arr;
-    public Test(float[][] arr){
+    private float[][] arr;
+    private Test(float[][] arr){
         this.arr=arr;
     }
 
     /**
      * Divide rows by the first non-zero element of each row
      */
-    public  void Simplify() {
+    private void Simplify() {
         for (int i = 0; i < arr.length; i++) {
             float temp = 1;
             int cur = 0;
@@ -28,10 +28,10 @@ public class Test {
 
     /**
      * find the index of the leading one (if any) of an array
-     * @param a
-     * @return
+     * @param float a
+     * @return int
      */
-    public int find_one(float[] a){
+    private int find_one(float[] a){
         for (int b=0;b<a.length;b++){
             if (a[b]==1){
                 return b;
@@ -42,19 +42,14 @@ public class Test {
 
     /**
      * Row reducing the matrix
-     * @param size
+     * @param int size
      */
-    public void Reduce(int size) {
+    private void Reduce(int size) {
         this.Simplify();
-        if (size == arr.length) {
-
-        } else {
+        if (size != arr.length) {
             int pivot = find_one(arr[size]);
             for (int o = 0; o < arr.length; o++) {
-                if (o == size) {
-                    continue;
-                }
-                else {
+                if (o != size) {
                     if(pivot==-1){
                     continue;
                 }
@@ -69,11 +64,11 @@ public class Test {
 
     /**
      * helper function to subtract row a from row b (in arr)
-     * @param a
-     * @param b
-     * @param ply
+     * @param int a
+     * @param int b
+     * @param float ply
      */
-    protected void Rows(int a,int b,float ply){
+    private void Rows(int a,int b,float ply){
         int l = arr[a].length;
         for (int u=0;u<l;u++){
                 arr[b][u]=arr[b][u]-arr[a][u]*ply;
@@ -94,7 +89,7 @@ public class Test {
         }
         float[][] a = {{0,2,5},{3,6,12},{3,2,2}};
         System.out.println("original");
-        for (int y=0;y<a.length;y++){
+        for (int y=0;y<aa.length;y++){
             for (int b=0;b<aa[y].length;b++){
         System.out.print(aa[y][b]+" ");
             }
